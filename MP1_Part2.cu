@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
-#include <stdlib.h>         // For memory cleanup
-#include <math.h>           // For fabs (absolute value)
-#include <time.h>           // For CPU timing with clock()
-
+#include <stdlib.h> 
+#include <math.h> 
+#include <time.h>
 
 // matrix multiplication on GPU (from CPU) using CUDA kernels
 __global__ void matMulKernelPart2(const float* M, const float* N, float* P, int width) {
-    // Only one thread (0,0) does the entire multiplication
     if (threadIdx.x == 0 && threadIdx.y == 0 && blockIdx.x == 0 && blockIdx.y == 0) {
         for (int r = 0; r < width; r++) {
             for (int c = 0; c < width; c++) {
@@ -34,7 +32,7 @@ __global__ void matMulKernelPart3(const float* M, const float* N, float* P, int 
 }
 
 
-// CPU implementation of matrix multiplication
+// matrix multiplication on CPU
 void matMulCPU(const float* M, const float* N, float* P, int width) {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < width; j++) {

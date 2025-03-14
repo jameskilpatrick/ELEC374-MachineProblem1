@@ -14,22 +14,22 @@ int main(){
 
         int coresPerSM = 0;
 
-        if (prop.major == 2) { // Fermi
+        if (prop.major == 2) {
             coresPerSM = (prop.minor == 1) ? 48 : 32;
-        } else if (prop.major == 3) { // Kepler
+        } else if (prop.major == 3) {
             coresPerSM = 192;
-        } else if (prop.major == 5) { // Maxwell
+        } else if (prop.major == 5) {
             coresPerSM = 128;
-        } else if (prop.major == 6) { // Pascal
+        } else if (prop.major == 6) {
             coresPerSM = (prop.minor == 1) ? 128 : 64;
-        } else if (prop.major == 7) { // Volta / Turing
+        } else if (prop.major == 7) {
             coresPerSM = 64;
-        } else if (prop.major == 8) { // Ampere
+        } else if (prop.major == 8) {
             coresPerSM = 128;
-        } else if (prop.major == 9) { // Hopper
+        } else if (prop.major == 9) {
             coresPerSM = 128;
         } else {
-            coresPerSM = 64; // Default fallback if unknown architecture
+            coresPerSM = 64;
         }
         int totalCores = specs.multiProcessorCount * coresPerSM;
 
